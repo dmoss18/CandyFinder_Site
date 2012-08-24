@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript"
+src="http://maps.google.com/maps/api/js?sensor=true">
+</script>
+<script type="text/javascript">
+var your_city = new google.maps.LatLng(<%= @lat -%>, <%= @lon -%> );
+var marker;
+var map;
+var infoWindow;
+function initialize() {
+var mapOptions = {
+zoom: <%= @zoom %>,
+mapTypeId: google.maps.MapTypeId.ROADMAP,
+center: your_city,
+icon: "Devin"
+};
+map = new google.maps.Map(document.getElementById("map_canvas"),
+mapOptions);
+/* now inside your initialise function */
+infoWindow = new google.maps.InfoWindow({
+content: "test"
+});
+<% @locations.each do |l| %>
+var your_place = new google.maps.LatLng(<%= l.lat -%>, <%= l.lon -%> );
+marker = new google.maps.Marker({map:map,draggable:false,animation: google.maps.Animation.DROP,position: your_place,clickable: true});
+google.maps.event.addListener(marker, 'click', function () { infoWindow.setContent("<%= l.name%>" + "<br />" + "<%= l.address%>" + "<br />" + "<%= l.city%>" + ", " + "<%= l.state%>" + " " + "<%=l.zip%>"); infoWindow.open(map, this);});
+<%end%>
+}
+</script>
+</head>
+<div id="mapPage">
+<% if @candy.nil? %>
+<p style="text-align:center;">Displaying <%= pluralize(@locations.count, 'location') %> for <%= @zip %></p>
+<% else %>
+<p style="text-align:center;">Displaying locations for <%= @candy.title%></p>
+<% end %>
+<body onload="initialize()">
+<div id="map_canvas" style="width:98%; height:503px; margin:0 auto;"></div>
+</div>
+</body>
+</html>

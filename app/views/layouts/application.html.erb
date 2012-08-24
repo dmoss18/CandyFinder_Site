@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <title>CandyFinder</title>
+  <%= stylesheet_link_tag "styles" %>
+  <%= stylesheet_link_tag "mobile" if mobile_device? %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+</head>
+<body>
+  <div style="width: auto; margin-left: auto; margin-right: auto; height: auto;">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= devise_error_messages! %>
+  </div>
+  <div class="page">
+    <div class="leftBar">
+	<div class="leftBar1">
+	  <%= image_tag('leftBar_01.png')%>
+	</div>
+	<div class="leftBar2">
+	   <a href="/" ><%= image_tag('leftBar_02.png')%></a>
+	</div>
+	<div class="leftBar3">
+           <div style="margin:276px 0 0 50px; width:105px; height:179px;"><%= image_tag('candyBtn.png')%></div>
+	</div>
+    </div>
+	<div class="content">
+          <div class="topBar"></div>
+	     <div class="center">
+	       <div class="centerBar"></div>
+	         <div class="centerContent">
+		    <div style="float: right; padding-right: 20px; padding-top: 10px;">
+     			 <% if user_signed_in? %>
+        		<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      			<% else %>
+        		<%= link_to "Login", new_user_session_path %> <br />
+        		<%= link_to "Sign up", new_user_registration_path %>
+      			<% end %>
+    		    </div>
+		    <%= yield %>
+                 </div>
+	       </div>
+	       <div class="bottomBar"></div>
+	    </div>
+	</div>
+</body>
+</html>

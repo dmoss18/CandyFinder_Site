@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <title>CandyFinder</title>
+  <%= stylesheet_link_tag "styles" %>
+  <%= stylesheet_link_tag "mobile" if mobile_device? %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+</head>
+<body>
+  <div class="page">
+    <div class="leftBar">
+        <div class="leftBar1">
+          <%= image_tag('leftBar_01.png')%>
+        </div>
+        <div class="leftBar2">
+           <a href="/" ><%= image_tag('leftBar_02.png')%></a>
+        </div>
+        <div class="leftBar3">
+           <div style="margin:276px 0 0 50px; width:105px; height:179px;"></div>
+        </div>
+    </div>
+        <div class="content">
+          <div class="topBar"></div>
+             <div class="center">
+               <div class="centerBar"></div>
+                 <div class="centerContent">
+                    <%= yield %>
+                 </div>
+               </div>
+               <div class="bottomBar"></div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+class SearchController < ApplicationController
+  def name
+        @name = "%".concat(params[:id].concat("%"))
+	if @name.nil?
+	  @name = "%".concat(params[:id].concat("%"))
+	end
+	@candy = Candy.find(:all, :conditions => ["title like ?", @name])
+	logger.info "From Mobile: #{@name} From DB: #{@candy}"
+
+	render :json => @candy
+  end
+
+  def sku
+	@sku = params[:id]
+	if @sku.nil?
+	  @sku = params[:sku]
+	end
+	@candy = Candy.find_by_sku(@sku)
+	logger.info "From Mobile: #{@sku} From DB: #{@candy}"
+	render :json => @candy
+	#respond_to do |format|
+	  #format.html { redirect_to @candy }
+	  #format.json { render :json => @candy }
+	#end
+	  
+  end
+
+  def ingredient
+  end
+
+end

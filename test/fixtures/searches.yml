@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  candy_id: 1
+  search_term: MyString
+  device_id: MyString
+
+two:
+  candy_id: 1
+  search_term: MyString
+  device_id: MyString

@@ -1,0 +1,2 @@
+sku = params[:id]
+#other stuff here

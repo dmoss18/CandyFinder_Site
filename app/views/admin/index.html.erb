@@ -1,0 +1,17 @@
+<h1>Admin</h1>
+<div>
+Where would you like to go?
+</div>
+<br />
+<table>
+ <tr>
+  <td><%= link_to "Analytics", :controller => :admin, :action => :analytics %></td>
+ </tr>
+ <tr>
+  <td><%= link_to "Pending Candies", :controller => :admin, :action => :candies_pending %></td>
+ </tr>
+ <tr>
+  <td><%= link_to "Searches", :controller => :admin, :action => :searches %></td>
+ </tr>
+</table>
+

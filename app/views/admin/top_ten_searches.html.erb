@@ -1,0 +1,17 @@
+<h3>Top Ten Searches on <%= @date %></h3>
+<table border="1">
+  <tr>
+    <th>Search Count</th>
+    <th>Candy id</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+  </tr>
+<% @ten_searches.each do |s| %>
+  <tr>
+    <td align="center"><%= s[0] %></td>
+    <td align="center"><%= s[1] %></td>
+    <td align="center"><%= s[2] %></td>
+    <td align="center"><%= s[3] %></td>
+  </tr>
+<% end %>
+</table>

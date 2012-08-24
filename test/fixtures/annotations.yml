@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  candy_id: 1
+  candy_sku: MyString
+  device_id: MyString
+  location_id: 1
+
+two:
+  candy_id: 1
+  candy_sku: MyString
+  device_id: MyString
+  location_id: 1

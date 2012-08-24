@@ -1,0 +1,29 @@
+<h1>Listing annotations</h1>
+
+<table>
+  <tr>
+    <th>Candy</th>
+    <th>Candy sku</th>
+    <th>Device</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @annotations.each do |annotation| %>
+  <tr>
+    <td><%= annotation.candy_id %></td>
+    <td><%= annotation.candy_sku %></td>
+    <td><%= annotation.device_id %></td>
+    <td><%= annotation.location_id %></td>
+    <td><%= link_to 'Show', annotation %></td>
+    <td><%= link_to 'Edit', edit_annotation_path(annotation) %></td>
+    <td><%= link_to 'Destroy', annotation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Annotation', new_annotation_path %>

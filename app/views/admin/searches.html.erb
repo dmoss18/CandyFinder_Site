@@ -1,0 +1,38 @@
+<%= form_tag admin_top_ten_searches_path, :id => "dateForm", :method => :get, 'data-type' => 'html', :remote => true do %>
+  Date: <input id="datepicker" type="text" name="date">
+  <input type="submit" id="submit_date" value="Go" />
+<% end %>
+
+<div id="top_ten_searches_div" style="width: 45%; float: left;">
+</div>
+
+<div style="width: 45%; float: right;">
+<h3>iPhone App Top Searches (all-time)</h3>
+<table border="1">
+  <tr>
+    <th>Search Count</th>
+    <th>id</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+  </tr>
+<% @searches.each do |s| %>
+  <tr>
+    <td align="center"><%= s[0] %></td>
+    <td align="center"><%= s[1] %></td>
+    <td align="center"><%= s[2] %></td>
+    <td align="center"><%= s[3] %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<%= javascript_tag do %>
+  $("#dateForm").bind("ajax:success", function(data, searches, xhr){
+    $("#top_ten_searches_div").html(searches);
+  });
+
+$(function() {
+		$( "#datepicker" ).datepicker();
+	});
+
+<% end %>

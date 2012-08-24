@@ -1,0 +1,69 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	background-image: url('background.png');
+	background-repeat: repeat;
+}
+div.page {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+	min-height: 620px;
+	min-width: 910px;
+	height: 620px;
+	width: 910px;
+}
+div.leftBar {
+	padding: 0px;
+	margin: 0px;
+	height: 620px;
+	width: 272px;
+	background-image: url('leftBar.png');
+	float: left;
+}
+div.content {
+	font-size: 14pt;
+	margin-left: 272px;
+	height: 620px;
+	width: 637px;
+}
+div.topBar {
+	padding: 0px;
+	margin: 0px;
+	height: 19px;
+	width: 637px;
+	background-image: url('topBar.png');
+}
+div.center {
+	padding: 0px;
+	margin: 0px;
+	width: 637px;
+	height: 573px;
+}
+div.bottomBar {
+	padding: 0px;
+	margin: 0px;
+	background-image: url('bottomBar.png');
+	height: 28px;
+	width: 637px;
+}
+div.centerContent {
+	color: #8e717e;
+	background-color: #fbe2f0;
+	padding: 0px;
+	margin: 0px;
+	width: 610px;
+	height: 573px;
+}
+div.centerBar {
+	float: right;
+	background-image: url('rightBar.png');
+	padding: 0px;
+	margin: 0px;
+	height: 573px;
+	width: 27px;
+	
+}

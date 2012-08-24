@@ -1,0 +1,15 @@
+<h1>Candy Finder</h1>
+<p style="color:#ff33ff;">Search for some Candy by SKU</p>
+<%= form_tag(:search_sku, :method => "get") do %>
+  <%= label_tag(:sku, "SKU:") %>
+  <%= text_field_tag(:sku) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<p style="color:#ff33ff;">Search for some Candy by name</p>
+<%= form_tag(:search_name, :method => "get") do %>
+  <%= label_tag(:name, "Name:") %>
+  <%= text_field_tag(:id) %>
+  <%= submit_tag("Search") %>
+<% end %>
+

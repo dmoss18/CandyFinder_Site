@@ -1,0 +1,23 @@
+body { font-family: Helvetica, Arial, sans-serif; background-image: url('background.png'); background-repeat: repeat;}
+div.page { margin-left: auto; margin-right: auto; padding: 0px; min-height: 620px; min-width: 910px; height: 620px; width: 910px;}
+div.leftBar { padding: 0px; margin: 0px;height: 620px; width: 272px;	float: left;}
+.leftBar1 { padding: 0px; margin: 0px;height: 83px; width: 272px; float: left;}
+div.leftBar2 { padding: 0px; margin: 0; height: 156px; width:272px; float:left;}
+div.leftBar3 { padding: 0px; margin: 0; height: 381px; width:272px; background-image: url('leftBar_03.png'); float:left;}
+div.content { font-size: 14pt; margin-left: 272px; height: 620px; width: 637px;}
+div.topBar {	padding: 0px; margin: 0px; height: 19px; width: 637px; background-image: url('topBar.png');}
+div.center {	padding: 0px; margin: 0px; width: 637px; height: 573px;}
+div.bottomBar { 	padding: 0px; margin: 0px; background-image: url('bottomBar.png');	height: 28px; width: 637px;}
+div.centerContent {	color: #8e717e;	background-color: #fbe2f0; padding: 0px; margin: 0px; width: 610px; height: 573px;}
+div.centerBar { float: right; background-image: url('rightBar.png'); padding: 0px; margin: 0px; height: 573px; width: 27px;}
+#homePage { padding:150px 50px 50px 50px; text-align:center; height: 373px; width:510px;}
+#or { padding:0 10px; }
+#searchPage { padding:30px 50px; text-align:center; height:503px; width: 500px; overflow:scroll; overflow-x:hidden;}
+#mapPage { padding: 10px 0 0 0; height:563px; width:610px;}
+div.topPadding {
+	padding-top: 10px;
+}
+
+div.textCenter {
+	text-align: center;
+}

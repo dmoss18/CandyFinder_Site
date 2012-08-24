@@ -1,0 +1,18 @@
+<div id="homePage">
+<%= image_tag("SearchText.png")%><br /><br />
+<%= form_tag(:searches_name, :method => "get") do %>
+<%= label_tag(:sku, "SKU:") %>
+<%= text_field_tag(:sku) %><span id="or">OR</span>
+<%= label_tag(:name, "Name:") %>
+<%= text_field_tag(:name) %><br /><br />
+<%= label_tag(:zip, "Zip Code:") %><span style="color: red;">(required)</span>
+<%= text_field_tag(:zip) %><br /><br />
+<%= submit_tag("Search") %>
+<% end %>
+<div class="fb-like" data-href="http://www.candyfinder.net" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style="width:100px; float:left; display:inline; margin:100px 10px 20px 10px;"></div>
+<div style="width:50px; float:left; display:inline; margin:100px 10px 20px 10px;"><a href="https://plus.google.com/102718454904577460371?prsrc=3" target="_blank" rel="publisher" style="text-decoration:none;"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="" style="border:0;width:32px;height:32px;"/></a></div>
+<div style="width:100px; float:left; display:inline; margin:100px 10px 20px 10px;"><a href="https://twitter.com/share" class="twitter-share-button" data-via="CandyFinder">Tweet</a></div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<p style="margin:100px 0 0 20px; float:left; display:inline;" ><%= image_tag("candies.png")%></p>
+</div>
+<%= render "home/analytics" %>

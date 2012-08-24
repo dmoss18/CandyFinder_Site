@@ -1,0 +1,37 @@
+<div style="width: 45%; float: left;">
+<h3>iPhone App Daily Usage </h3>
+<table border="1">
+  <tr>
+    <th>Date</th>
+    <th>Unique Hits</th>
+    <th>Total Hits</th>
+  </tr>
+<% @analytics.each do |an| %>
+  <tr>
+    <td align="center"><%= (an.created_at - 1.day).strftime("%Y-%m-%d") %></td>
+    <td align="center"><%= an.unique_hits %></td>
+    <td align="center"><%= an.total_hits %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<div style="width: 45%; float: right;">
+<h3>iPhone App Top Searches (all-time)</h3>
+<table border="1">
+  <tr>
+    <th>Search Count</th>
+    <th>id</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+  </tr>
+<% @searches.each do |s| %>
+  <tr>
+    <td align="center"><%= s[0] %></td>
+    <td align="center"><%= s[1] %></td>
+    <td align="center"><%= s[2] %></td>
+    <td align="center"><%= s[3] %></td>
+  </tr>
+<% end %>
+</table>
+</div>

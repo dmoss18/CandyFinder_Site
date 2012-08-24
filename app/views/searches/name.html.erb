@@ -1,0 +1,12 @@
+<div id="searchPage">
+
+<% if @candy.nil? %>
+  <p>Candy not found</p>
+<%else%>
+  <p>Displaying <%=@candy.count%> results</p>
+  <% @candy.each do |c| %>
+    <%=link_to c.title, :controller => "map", :action => "map", :lat=>@lat , :lon=>@lon, :candy_id=>c.id %><br /><br />
+  <%end%>
+<%end%>
+
+</div>

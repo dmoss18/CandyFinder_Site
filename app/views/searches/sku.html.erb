@@ -1,0 +1,16 @@
+<h1>Searches#sku</h1>
+<p>Find me in app/views/searches/sku.html.erb</p>
+
+<% if @candy.nil? %>
+<%= render 'index' %>
+<%else%>
+<% if @sku.nil? %>
+<%= render 'name' %>
+<%else%>
+<%=link_to @candy.title, :controller => "map", :action => "map", :lat=>@lat , :lon=>@lon, :candy_id=>@candy.id %><br />
+<%=@candy.subtitle%><br />
+<%=@candy.id%><br />
+<%=@candy.sku%><br /><br />
+<%end%>
+<%end%>
+
