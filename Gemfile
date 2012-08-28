@@ -27,7 +27,8 @@ gem 'jquery-rails', '>= 1.0.12'
 
 # Use unicorn as the web server
 # gem 'unicorn'
-gem 'unicorn'
+#gem 'unicorn'
+gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
