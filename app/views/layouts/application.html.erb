@@ -32,7 +32,9 @@
 	   <a href="/" ><%= image_tag('leftBar_02.png')%></a>
 	</div>
 	<div class="leftBar3">
-           <div style="margin:276px 0 0 50px; width:105px; height:179px;"><%= image_tag('candyBtn.png')%></div>
+           <div style="margin:276px 0 0 50px; width:105px; height:179px;">
+		<a href=http://itunes.apple.com/us/app/candy-finder/id538981775?ls=1&mt=8"><%= image_tag('candyBtn.png')%></a>
+           </div>
 	</div>
     </div>
 	<div class="content">
@@ -40,14 +42,6 @@
 	     <div class="center">
 	       <div class="centerBar"></div>
 	         <div class="centerContent">
-		    <div style="float: right; padding-right: 20px; padding-top: 10px;">
-     			 <% if user_signed_in? %>
-        		<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-      			<% else %>
-        		<%= link_to "Login", new_user_session_path %> <br />
-        		<%= link_to "Sign up", new_user_registration_path %>
-      			<% end %>
-    		    </div>
 		    <%= yield %>
                  </div>
 	       </div>

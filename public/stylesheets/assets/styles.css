@@ -21,3 +21,17 @@ div.topPadding {
 div.textCenter {
 	text-align: center;
 }
+
+.social-media-button {
+    float: left;
+    margin-top: 3em;
+    margin-left: 2em;
+}
+
+div.social-media-container {
+    //margin-top: 5.5em;
+}
+
+table#home-inputs td {
+    text-align: right;
+}
