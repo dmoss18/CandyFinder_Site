@@ -6,8 +6,8 @@ gem 'rails', '3.1.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
-#gem 'mysql2'
-gem 'pg'
+gem 'mysql2'
+#gem 'pg'
 gem 'json'
 gem 'mechanize', '~> 2.3'
 gem 'devise'
@@ -27,8 +27,8 @@ gem 'jquery-rails', '>= 1.0.12'
 
 # Use unicorn as the web server
 # gem 'unicorn'
-#gem 'unicorn'
-gem 'thin'
+gem 'unicorn'
+#gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
