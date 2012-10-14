@@ -1,3 +1,5 @@
+#This just updates the ext_image_url column of locations if they have an ext_reference (used to find Google Places details)
+
 require File.expand_path("/home/ty/CandyFinder/config/environment")
 require 'mechanize'
 

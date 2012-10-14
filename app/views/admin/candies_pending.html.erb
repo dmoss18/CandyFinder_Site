@@ -24,19 +24,19 @@
 <script type="text/javascript">
 
 function approve_pending(n) {
-  console.log("approve " + n)
-  console.log("<%= root_path %>")
+  //console.log("approve " + n)
+  //console.log("<%= root_path %>")
   $.ajax({url:"/candies/approve_pending/"+n, success:function(result){
     $("#"+n).remove();
   }});
 }
 
 function deny_pending(n) {
-  console.log("#"+n);
+  //console.log("#"+n);
   var x = $("#"+n);
-  console.log(x);
+  //console.log(x);
   $.ajax({url:"/candies/deny_pending/"+n, success:function(result){
-    $("#"+n).remove;
+    $("#"+n).remove();
   }});
 }
 
