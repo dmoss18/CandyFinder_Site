@@ -1,0 +1,17 @@
+<%= form_for(@pending_candy) do |f| %>
+  <% if @pending_candy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pending_candy.errors.count, "error") %> prohibited this pending_candy from being saved:</h2>
+
+      <ul>
+      <% @pending_candy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

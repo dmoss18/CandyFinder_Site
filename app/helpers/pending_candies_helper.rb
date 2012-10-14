@@ -1,0 +1,2 @@
+module PendingCandiesHelper
+end

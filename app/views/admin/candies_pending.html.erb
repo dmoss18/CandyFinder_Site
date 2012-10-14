@@ -8,13 +8,17 @@
 </tr>
 <% @candies.each do |c| %>
   <tr id="<%= c.id %>">
-    <td><%= c.title %></td>
-    <td><%= c.subtitle %></td>
+  <%= form_for c, :html => { :id => "#{c.id}_form" }, :remote => true do |f| %>
+    <td><%= f.text_field :title, { :value => c.title } %>
+    <td><%= f.text_field :subtitle, { :value => c.subtitle } %>
     <td><%= c.sku %></td>
     <td><a href="http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=<%= c.sku %>" target="_blank" >Amazon.com</a></td>
     <td><a href="http://www.upcdatabase.com/item/<%= c.sku %>" target="_blank" >UPC Database</a></td>
-    <td><button type="button" onclick="approve_pending(<%= c.id %>)">Approve</button> </td>
-    <td><button type="button" onclick="deny_pending(<%= c.id %>)">Deny</button> </td>
+    <td><%= f.submit "Approve" %>
+  <% end %>
+  <td> 
+    <%= button_to "Deny", { :controller => :pending_candies, :action => :destroy, :id => c.id }, :remote => true, :method => :delete %>
+  </td>
   </tr>
 <% end %>
 

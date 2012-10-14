@@ -97,13 +97,18 @@ class CandiesController < ApplicationController
   def approve_pending
     logger.info "approve_pending"
     p = PendingCandy.find(params[:id])
+    p.title = params[:pending_candy][:title]
+    p.subtitle = params[:pending_candy][:subtitle]
     c = Candy.candy_from_pending(p)
     if(c.save)
       p.destroy
     else
       logger.info c.errors.full_messages.to_sentence
     end
-    render :nothing => true
+    #render :nothing => true
+    respond_to do |format|
+      format.js
+    end
   end
 
   def deny_pending

@@ -42,6 +42,7 @@ CandyFinder::Application.routes.draw do
   resources :locations
   resources :searches
   resources :annotations
+  resources :pending_candies
 
   # Sample resource route with options:
   #   resources :products do

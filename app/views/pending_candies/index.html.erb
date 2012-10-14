@@ -1,0 +1,21 @@
+<h1>Listing pending_candies</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pending_candies.each do |pending_candy| %>
+  <tr>
+    <td><%= link_to 'Show', pending_candy %></td>
+    <td><%= link_to 'Edit', edit_pending_candy_path(pending_candy) %></td>
+    <td><%= link_to 'Destroy', pending_candy, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pending candy', new_pending_candy_path %>
