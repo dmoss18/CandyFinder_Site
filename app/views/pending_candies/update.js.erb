@@ -5,4 +5,5 @@ if(remove) {
   $("#<%= @pending_candy.id %>").remove();
 } else {
   $(".alert").html("<%= flash[:alert] %>");
+  alert("<%= flash[:alert] %>");
 }
