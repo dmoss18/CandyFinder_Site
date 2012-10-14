@@ -2,6 +2,7 @@
 <tr>
   <th>Brand</th>
   <th>Type</th>
+  <th>Description/Filters</th>
   <th>SKU</th>
   <th>Amazon Link</th>
   <th>UPC Database Link</th>
@@ -11,6 +12,7 @@
   <%= form_for c, :html => { :id => "#{c.id}_form" }, :remote => true do |f| %>
     <td><%= f.text_field :title, { :value => c.title } %>
     <td><%= f.text_field :subtitle, { :value => c.subtitle } %>
+    <td><%= text_field :pending_candy, :description %> </td> 
     <td><%= c.sku %></td>
     <td><a href="http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=<%= c.sku %>" target="_blank" >Amazon.com</a></td>
     <td><a href="http://www.upcdatabase.com/item/<%= c.sku %>" target="_blank" >UPC Database</a></td>

@@ -60,15 +60,21 @@ class PendingCandiesController < ApplicationController
     @pending_candy.title = params[:pending_candy][:title]
     @pending_candy.subtitle = params[:pending_candy][:subtitle]
     c = Candy.candy_from_pending(@pending_candy)
+    c.description = params[:pending_candy][:description]
+    c.alias = params[:pending_candy].map {|k,v| v }.join(" ")
 
-    respond_to do |format|
-      #if @pending_candy.update_attributes(params[:pending_candy])
-      if c.save
-        @pending_candy.destroy
-	format.js
-      else
-	c.errors.full_messages.to_sentence
+    #if @pending_candy.update_attributes(params[:pending_candy])
+    @success = true
+    if c.valid?
+      c.save
+      @pending_candy.destroy
+      respond_to do |format|
+  	format.js
       end
+    else
+      @success = false
+      logger.info c.errors.full_messages.to_sentence
+      flash[:alert] = c.errors.full_messages.to_sentence
     end
   end
 

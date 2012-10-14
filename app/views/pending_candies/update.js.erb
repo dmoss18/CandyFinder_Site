@@ -1,1 +1,8 @@
-$("#<%= escape_javascript(@pending_candy.id) %>").remove();
+$(".alert").html("");
+var remove = <%= @success %>;
+if(remove) {
+  $(".alert").html("");
+  $("#<%= @pending_candy.id %>").remove();
+} else {
+  $(".alert").html("<%= flash[:alert] %>");
+}
