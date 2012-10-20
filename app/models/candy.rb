@@ -6,7 +6,7 @@ class Candy < ActiveRecord::Base
 	validates_presence_of :title, :sku, :description, :alias
 
   def self.search_by_name(name)
-    return Candy.find(:all, :conditions => ["title like ?", "%#{name}%"], :order => "title ASC, subtitle ASC")
+    return Candy.find(:all, :conditions => ["alias like ?", "%#{name}%"], :order => "title ASC, subtitle ASC")
   end
 
   def self.ids_by_name(name)
