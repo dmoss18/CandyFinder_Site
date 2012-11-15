@@ -152,4 +152,13 @@ class CandiesController < ApplicationController
     render :nothing => true
   end
 
+  def get_timestamp
+    annotation = Annotation.find_by_candy_id_and_location_id(634, 114)
+    if(annotation)
+      render :json => annotation.updated_at
+    else
+      render :json => ''
+    end
+  end
+
 end
