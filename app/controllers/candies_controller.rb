@@ -155,9 +155,9 @@ class CandiesController < ApplicationController
   def get_timestamp
     annotation = Annotation.find_by_candy_id_and_location_id(634, 114)
     if(annotation)
-      render :json => annotation.updated_at
+      render annotation.updated_at
     else
-      render :json => ''
+      render ''
     end
   end
 
