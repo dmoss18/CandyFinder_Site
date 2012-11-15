@@ -1,4 +1,11 @@
 class CandiesController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :index, :show, :new, :edit, :create, :update, :destroy, :approve_pending, :deny_pending ]
+  layout "admin"
+
+  def index
+    @candies = Candy.all
+  end
+
   def show
 	@id = params[:id]
 	@candy = Candy.find_by_id(@id)	
@@ -37,6 +44,34 @@ class CandiesController < ApplicationController
         format.html { render :action => "new" }
         format.json { render :json => {:message => @candy.errors.full_messages.join("\n"), :status => 404} }
       end
+    end
+  end
+
+  # PUT /candies/1
+  # PUT /candies/1.json
+  def update
+    @candy = Candy.find(params[:id])
+
+    respond_to do |format|
+      if @candy.update_attributes(params[:candy])
+        format.html { redirect_to @candy, :notice => 'Candy was successfully updated.' }
+        format.json { render :json => @candy, :status => :updated, :candy => @candy }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @candy.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /candies/1
+  # DELETE /candies/1.json
+  def destroy
+    @candy = Candy.find(params[:id])
+    @candy.destroy
+
+    respond_to do |format|
+      format.html { redirect_to candies_url }
+      format.json { head :ok }
     end
   end
 

@@ -4,6 +4,7 @@ class Candy < ActiveRecord::Base
 	validates_uniqueness_of :sku
 	validates_length_of :sku, :maximum => 13
 	validates_presence_of :title, :sku, :description, :alias
+	before_save :set_alias
 
   def self.search_by_name(name)
     return Candy.find(:all, :conditions => ["alias like ?", "%#{name}%"], :order => "title ASC, subtitle ASC")
@@ -41,6 +42,10 @@ class Candy < ActiveRecord::Base
     c.subtitle = p.subtitle
     c.sku = p.sku
     return c
+  end
+
+  def set_alias
+    @candy.alias = "#{title} #{subtitle} #{description}"
   end
 
 end

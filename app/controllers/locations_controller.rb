@@ -1,5 +1,28 @@
 class LocationsController < ApplicationController
-require 'mechanize'
+  require 'mechanize'
+  require 'json'
+  require 'open-uri'
+
+  before_filter :authenticate_user!, :only => [ :index, :show, :new, :edit, :create, :update, :destroy,  :google_places_data, :filtered_google_places_data, :populate_google_places_data ]
+  #before_filter :instantiate_mechanize
+  layout "admin"
+
+  @@agent = nil
+  def agent
+    @@agent
+  end
+
+  def instantiate_mechanize
+	if @@agent.nil?
+	 #cert_store = OpenSSL::X509::Store.new
+	 #cert_store.add_file = 'lib/cacert.pem'
+	 logger.level = Logger::DEBUG
+	 @@agent = Mechanize.new{|a| a.log = logger}
+	 #@@agent.cert_store = cert_store
+	 #@@agent.agent.http.reuse_ssl_sessions = false
+	 #@@agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+	end
+  end
 
   # GET /locations
   # GET /locations.json
@@ -229,4 +252,41 @@ require 'mechanize'
       format.json { render :json => @locations }
     end
   end
+
+  def google_places_data
+  end
+
+  def filtered_google_places_data
+    #agent = Mechanize.new
+    #agent.agent.http.reuse_ssl_sessions = false
+    #agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    url = Places.search_url_with_filter(params[:lat], params[:lon], { 'keyword' => params[:filter], 'rankby' => 'distance' })
+    logger.info url
+    #response = agent.get(url)
+    uri = URI.parse(url)
+    body = JSON.parse(uri.read)
+    #body = JSON.parse(response.body)
+    render :json => body['results']
+  end
+
+  # POST /locations
+  # POST /locations.json
+  def populate_google_places_data
+    #agent = Mechanize.new
+    #agent.agent.http.reuse_ssl_sessions = false
+    #agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    #response = agent.get(Places.get_details_url(params[:reference]))
+    uri = URI.parse(Places.get_details_url(params[:reference]))
+    response = JSON.parse(uri.read)
+    location = Location.find(params[:id])
+    location.populate_from_location(Location.location_from_places_details(response))
+
+    if location.valid?
+	logger.info "Saving google info for location #{params[:reference]}"
+	#location.save
+	render :json => location
+    end
+  end
+
 end

@@ -1,0 +1,40 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "google_places_data.js" %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<!-- ko if: hasLocation -->
+<div data-bind="html: location().name"></div>
+<div data-bind="html: location().full_address"></div>
+<div data-bind="html: location().zip"></div>
+<div data-bind="html: location().international_phone"></div>
+<div data-bind="html: location().google_id"></div>
+<div data-bind="html: location().reference"></div>
+<div data-bind="html: location().google_url"></div>
+<!-- /ko -->
+
+<div>
+  <div>Filter by name: <input type="text" data-bind="value: locFilter" />&nbsp;<button data-bind="click: getFilteredResults">Go</button></div>
+  <div><input type="hidden" id="locId" value="<%= params[:id] %>" /></div>
+</div>
+
+<!-- ko if: places().length == 0 -->
+  <span>Zero results found</span>
+<!-- /ko -->
+<!-- ko if: places().length > 0 -->
+ <table>
+  <tr>
+   <th>Name</th>
+   <th>Vicinity</th>
+   <th></th>
+  </tr>
+  <!-- ko foreach: places -->  
+    <tr>
+      <td data-bind="html: name" ></td>
+      <td data-bind="html: vicinity" ></td>
+      <td><button data-bind="click: submitPlace">Select</button></td>
+    </tr>
+  <!-- /ko -->
+ </table>
+<!-- /ko -->

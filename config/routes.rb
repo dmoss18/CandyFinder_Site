@@ -1,4 +1,5 @@
 CandyFinder::Application.routes.draw do
+  devise_for :users, :controllers => { :registrations => "registrations" }
   devise_for :users
   #devise_for :mobile, :controllers => { :sessions => "mobile/sessions" }
 
@@ -27,6 +28,8 @@ CandyFinder::Application.routes.draw do
   match 'searches/sku' => 'searches#sku'
   match 'searches/name' => 'searches#name'
   match 'locations/from_region' => 'locations#from_region'
+  match 'locations/filtered_google_places_data' => 'locations#filtered_google_places_data'
+  match 'locations/populate_google_places_data' => 'locations#populate_google_places_data'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

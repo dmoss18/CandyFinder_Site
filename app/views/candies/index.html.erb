@@ -1,27 +1,31 @@
-<h1>Listing locations</h1>
+<h1>Listing Candies</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Lat</th>
-    <th>Long</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Sku</th>
+    <th>Description</th>
+    <th>Alias</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @locations.each do |location| %>
+<% @candies.each do |candy| %>
   <tr>
-    <td><%= location.name %></td>
-    <td><%= location.lat %></td>
-    <td><%= location.long %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= candy.title %></td>
+    <td><%= candy.subtitle %></td>
+    <td><%= candy.sku %></td>
+    <td><%= candy.description %></td>
+    <td><%= candy.alias %></td>
+    <td><%= link_to 'Show', candy %></td>
+    <td><%= link_to 'Edit', edit_candy_path(candy) %></td>
+    <td><%= link_to 'Destroy', candy, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Location', new_location_path %>
+<%= link_to 'New Candy', new_candy_path %>

@@ -3,8 +3,16 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>International Phone</th>
+    <th>Formatted Phone</th>
     <th>Lat</th>
     <th>Lon</th>
+    <th>Google Info</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,11 +21,23 @@
 <% @locations.each do |location| %>
   <tr>
     <td><%= location.name %></td>
+    <td><%= location.address %></td>
+    <td><%= location.city %></td>
+    <td><%= location.state %></td>
+    <td><%= location.zip %></td>
+    <td><%= location.phone_international %></td>
+    <td><%= location.phone_formatted %></td>
     <td><%= location.lat %></td>
     <td><%= location.lon %></td>
+    <% google_class = "google_ready" %>
+    <% if location.ext_reference.nil? %>
+      <% google_class = "google_needed" %>
+    <% end %>
+    <td class="<%= google_class %>" ><%= not location.ext_reference.nil? %></td>
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Edit', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Google Data", { :controller => :locations, :action => :google_places_data, :id => location.id } %></td>
   </tr>
 <% end %>
 </table>
