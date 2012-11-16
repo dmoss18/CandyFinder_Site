@@ -107,10 +107,13 @@ class CandiesController < ApplicationController
 
   def name
     name = params[:id]
-    @candies = Candy.search_by_name(name)
-    logger.info @candies.to_json
+    @candies =  []
+    if name
+      @candies = Candy.search_by_name(name)
+      logger.info @candies.to_json
+    end
     respond_to do |format|
-      format.html
+      format.html { render 'search' }
       format.json { render :json => @candies }
     end
   end

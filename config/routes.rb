@@ -25,6 +25,7 @@ CandyFinder::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   #match 'mobile/login' => 'devise/sessions#create'
+  match 'candies/search' => 'candies#name'
   match 'searches/sku' => 'searches#sku'
   match 'searches/name' => 'searches#name'
   match 'locations/from_region' => 'locations#from_region'

@@ -1,16 +1,9 @@
 class LocationsController < ApplicationController
-  require 'mechanize'
   require 'json'
   require 'open-uri'
 
   before_filter :authenticate_user!, :only => [ :index, :show, :new, :edit, :create, :update, :destroy,  :google_places_data, :filtered_google_places_data, :populate_google_places_data ]
-  #before_filter :instantiate_mechanize
   layout "admin"
-
-  @@agent = nil
-  def agent
-    @@agent
-  end
 
   def instantiate_mechanize
 	if @@agent.nil?
@@ -278,7 +271,7 @@ class LocationsController < ApplicationController
     #agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     #response = agent.get(Places.get_details_url(params[:reference]))
     uri = URI.parse(Places.get_details_url(params[:reference]))
-    response = JSON.parse(uri.read)
+    response = uri.read
     location = Location.find(params[:id])
     location.populate_from_location(Location.location_from_places_details(response))
 
