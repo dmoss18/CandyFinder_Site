@@ -1,0 +1,36 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "search_candies.js" %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div>
+  <div>Search: <input type="text" data-bind="value: candyFilter" />&nbsp;<button data-bind="click: getFilteredResults">Go</button></div>
+</div>
+
+<!-- ko if: candies().length == 0 -->
+  <span>Zero results found</span>
+<!-- /ko -->
+<!-- ko if: candies().length > 0 -->
+  <table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Sku</th>
+    <th>Description</th>
+    <th>Alias</th>
+    <th></th>
+  </tr>
+
+  <!-- ko foreach: candies -->
+  <tr>
+    <td data-bind="html: title"></td>
+    <td data-bind="html: subtitle"></td>
+    <td data-bind="html: sku"></td>
+    <td data-bind="html: description"></td>
+    <td data-bind="html: alias"></td>
+    <td><a data-bind="attr: { href : '/candies/edit/' + id }">Edit</a>
+  </tr>
+  <!-- /ko -->
+  </table>
+<!-- /ko -->

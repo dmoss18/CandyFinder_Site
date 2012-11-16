@@ -1,3 +1,9 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "candies_form.js" %>
+<% end %>
+
+<div id="candy-instance" data-title="<%= @candy.title %>" data-subtitle="<%= @candy.subtitle %>" data-sku="<%= @candy.sku %>" data-description="<%= @candy.description %>"></div>
+
 <%= form_for(@candy) do |f| %>
   <% if @candy.errors.any? %>
     <div id="error_explanation">
@@ -12,21 +18,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    Title<br />
+    <input type="text" size="100" data-bind="value: title"></input>
   </div>
   <div class="field">
-    <%= f.label :subtitle %><br />
-    <%= f.text_field :subtitle %>
+    Subtitle<br />
+    <input type="text" size="100" data-bind="value: subtitle"></input>
   </div>
   <div class="field">
-    <%= f.label :sku %><br />
-    <%= @candy.sku %>
+    Sku<br />
+    <input type="text" size="13" data-bind="value: sku"></input>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    Description<br />
+    <input type="text" size="100" data-bind="value: description"></input>
   </div>
+  <div class="field">
+    Alias<br />
+    <span data-bind="html: alias"></span>
   <div class="actions">
     <%= f.submit %>
   </div>
