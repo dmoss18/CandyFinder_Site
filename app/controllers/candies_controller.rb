@@ -153,11 +153,12 @@ class CandiesController < ApplicationController
   end
 
   def get_timestamp
-    annotation = Annotation.find_by_candy_id_and_location_id(634, 114)
+    annotation = Annotation.find_by_candy_id_and_location_id(params[:id], params[:location_id])
     if(annotation)
-      render annotation.updated_at
+      logger.info annotation.updated_at
+      render :text => annotation.updated_at
     else
-      render ''
+      render :text => ''
     end
   end
 
