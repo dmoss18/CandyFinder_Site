@@ -1,5 +1,5 @@
 class CandiesController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :index, :show, :new, :edit, :create, :update, :destroy, :approve_pending, :deny_pending ]
+  before_filter :authenticate_user!, :only => [ :index, :show, :new, :edit, :update, :destroy, :approve_pending, :deny_pending ]
   layout "admin"
 
   def index

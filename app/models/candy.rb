@@ -45,7 +45,9 @@ class Candy < ActiveRecord::Base
   end
 
   def set_alias
-    @candy.alias = "#{title} #{subtitle} #{description}"
+    Rails.logger.info @candy
+    Rails.logger.info "in candy model set_alias"
+    self.alias = "#{title} #{subtitle} #{description}"
   end
 
 end
